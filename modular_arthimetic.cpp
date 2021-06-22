@@ -10,16 +10,16 @@ int expo(int a, int b, int mod) {int res = 1; while (b > 0) {if (b & 1)res = (re
 int mminvprime(int a, int b) {return expo(a, b - 2, b);}
 // addition operation
 int mod_add(int a, int b, int m) {
-    a = a % m; b = b % m; return (((a + b) % m) + m) % m; }
+    a = a % m; b = b % m; return (((a + b) % m) ) % m; }
 //multiplication
 int mod_mul(int a, int b, int m) {
-    a = a % m; b = b % m; return (((a * b) % m) + m) % m; }
+    a = a % m; b = b % m; return (((a * b) % m) ) % m; }
 // subtration
 int mod_sub(int a, int b, int m){
     a = a % m; b = b % m; return (((a - b) % m) + m) % m; }
 // division
 int mod_div(int a, int b, int m) {
-    a = a % m; b = b % m; return (mod_mul(a, mminvprime(b, m), m) + m) % m;}  //only for prime m
+    a = a % m; b = b % m; return (mod_mul(a, mminvprime(b, m), m) ) % m;}  //only for prime m
 signed main(){
 
     cout<<"hello world\n";
