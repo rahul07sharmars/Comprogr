@@ -31,10 +31,12 @@ void merge(vector<int> &arr, int l, int m, int r)
         right++;
     }
     // changine the original arr
-    for (int i = l; i <= r; i++)
-    {
-        arr[i] = temp[i - l];
-    }
+//     for (int i = l; i <= r; i++)
+//     {
+//         arr[i] = temp[i - l];
+//     }
+    arr=temp;
+    
 }
 //mergeSort O(n*log n)
 void mergeSort(vector<int> &arr, int l, int r)
