@@ -31,11 +31,13 @@ void merge(vector<int> &arr, int l, int m, int r)
         right++;
     }
     // changine the original arr
-//     for (int i = l; i <= r; i++)
-//     {
-//         arr[i] = temp[i - l];
-//     }
-    arr=temp;
+    for (int i = l; i <= r; i++)
+    {
+        arr[i] = temp[i - l];
+    }
+    //this changes the complete arr and arr become equal to 
+    //temp causes loss of elements
+    //arr=temp;
     
 }
 //mergeSort O(n*log n)
