@@ -1,0 +1,17 @@
+//increasing by first and decreasing by the second value
+bool comparsion(pair<int, int> p1, pair<int, int> p2)
+{
+    if (p1.first >= p2.first)
+        return true;
+    else if (p1.first == p2.first && p1.second >= p2.second)
+        return true;
+    else
+        return false;
+}
+
+//decreasing order by second number in pair
+
+bool comparator(pair<int, int> m1, pair<int, int> m2){
+    if(m1.second <m2.second)   return true;
+    else  return false;
+}

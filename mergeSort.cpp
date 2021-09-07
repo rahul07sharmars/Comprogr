@@ -35,6 +35,10 @@ void merge(vector<int> &arr, int l, int m, int r)
     {
         arr[i] = temp[i - l];
     }
+    //this changes the complete arr and arr become equal to 
+    //temp causes loss of elements
+    //arr=temp;
+    
 }
 //mergeSort O(n*log n)
 void mergeSort(vector<int> &arr, int l, int r)
