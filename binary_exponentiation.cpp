@@ -2,23 +2,17 @@
 using namespace std;
 
 //iterative much faster than recursive
-int binexp(int base, int n)
+int binexp(int a, int b)
 {
-    int ans = 1;
-    while (n > 0)
+    int res = 1;
+    while (b > 0)
     {
-        if (n % 2)
-        {
-            ans = ans * base;
-            n = n - 1;
-        }
-        else
-        {
-            base = base * base;
-            n = n >> 2;
-        }
+        if (b & 1)
+            res = res * a;
+        a = a * a;
+        b >>= 1;
     }
-    return ans;
+    return res;
 }
 //binary exponentiation using recursion
 int binexp(int base, int n)
