@@ -62,6 +62,26 @@ vector<int> primeFactorizationOfN(int n)
         ans.push_back(n);
     return ans;
 }
+//return all the unique divisors of n
+//Time Complexity:O(sqrt(N))
+unordered_set<int> Divisors(int n)
+{
+    unordered_set<int> mp;
+    for (int i = 1; i <= sqrt(n); i++)
+    {
+        if (n % i == 0 )
+        {
+            if (n / i == i )
+                mp.insert(i);
+            else 
+            {
+                mp.insert(i);
+                mp.insert(n / i);
+            }
+        }
+    }   
+    return mp;
+}
 
 void solve()
 {
