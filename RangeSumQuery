@@ -1,0 +1,51 @@
+class NumArray {
+public:
+    vector<int> segTr;
+    vector<int> arr;
+    inline static int n;
+    void build (int idx, int low, int high){
+        if(low==high){
+            segTr[idx]=arr[low];
+            return;
+        }
+        if(low>high)    return;
+        int mid=(high+low)/2;
+        build(2*idx+1, low, mid);
+        build(2*idx+2, mid+1, high);
+        segTr[idx]=segTr[2*idx+1]+segTr[2*idx+2];
+        return;
+    }
+    NumArray(vector<int>& nums) {
+        n=nums.size();
+        arr=nums;
+        segTr.resize(4*n+6, 0);
+        build(0, 0, n-1);
+    }
+    void update(int index, int val, int left=0, int right=n-1, int idx=0) {
+        if(left==right){
+            segTr[idx]=val;return;}
+        else{
+            int mid=(left+right)/2;
+            if(index<=mid)  update(index, val, left, mid, 2*idx+1);
+            else    update(index, val, mid+1, right,2*idx+2);
+            segTr[idx]=segTr[2*idx+1]+segTr[2*idx+2];
+        }
+        
+    }
+    int sumRange(int l, int r, int idx=0, int low=0, int high=n-1){
+        if(low>=l && high<=r)
+            return segTr[idx];
+        if(high<l || low>r) return 0;
+        int mid=(high+low)/2;
+        int left=sumRange(l, r, 2*idx+1, low, mid);
+        int right=sumRange(l, r, 2*idx+2, mid+1, high);
+        return left+right;
+    }
+};
+
+/**
+ * Your NumArray object will be instantiated and called as such:
+ * NumArray* obj = new NumArray(nums);
+ * obj->update(index,val);
+ * int param_2 = obj->sumRange(left,right);
+ */
